@@ -1,0 +1,31 @@
+Project Title: Inquiry Management and Auto-Response System
+Industry: Suitable for Education, Retail, Services, Finance
+Project Type: Salesforce Lead Management Application
+Target Users: Support Staff, Sales Teams, Customers/Students/Clients
+Problem Statement:
+Organizations receive frequent inquiries via forms, emails, or chat. Manual tracking delays response and follow-up, resulting in missed opportunities and low customer satisfaction.
+Solution:
+Create a Salesforce app to capture all incoming inquiries, assign them automatically, and send instant confirmation or auto-response to the sender.
+________________________________________
+Phase 1: Problem Understanding & Industry Analysis
+•	Requirement Gathering: Identify and document the key needs and challenges from all stakeholders.
+•	Stakeholder Analysis:
+o	Sales/support team (high interaction with customers)
+o	Managers (monitoring metrics and team performance)
+o	IT/Admin (system maintenance)
+•	Business Process Mapping: Document the current flow: Customer inquiry → Manual logging → Follow-up → Resolution.
+•	Industry-Specific Use Case Analysis: For example, a college receives course inquiries via website forms; Salesforce logs each inquiry, sends an instant “Thank you, we’ll respond soon,” and routes to admissions staff.
+•	AppExchange Exploration: Explore lead/inquiry management apps for possible extensions or templates.
+________________________________________
+Phase 2: Org Setup & Configuration Steps
+	Selected appropriate Salesforce Edition.
+	Set up Company Profile with organization info, fiscal year, time zone, and currency.
+	Configured Business Hours and added official Holidays.
+	Defined Fiscal Year settings (standard or custom).
+	Created and assigned Users, User Licenses, and Profiles.
+	Established Role hierarchy and set up Permission Sets.
+	Set Organization-Wide Defaults (OWD) for record access.
+	Created Sharing Rules for data visibility.
+	Set Login Access Policies (login hours, IP ranges, security).
+	Set up Developer Edition and Sandboxes for testing and development.
+
