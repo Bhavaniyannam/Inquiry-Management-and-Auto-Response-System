@@ -29,7 +29,5 @@ This project automates the management of customer inquiries received via forms, 
 ## Contributing
 Contributions via pull requests are welcome. Please maintain code quality and document changes.
 
-## License
-This project is licensed under the [Specify License].
 
 ***
