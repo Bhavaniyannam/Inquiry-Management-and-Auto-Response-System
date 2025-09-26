@@ -1,18 +1,35 @@
-# Salesforce DX Project: Next Steps
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+***
 
-## How Do You Plan to Deploy Your Changes?
+# Inquiry Management and Auto Response System
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+This project automates the management of customer inquiries received via forms, emails, or chat. It streamlines tracking, improves response time, and enhances customer satisfaction by automating follow-ups and status updates.
 
-## Configure Your Salesforce DX Project
+## Features
+- Centralized inquiry tracking
+- Automated response generation
+- Status updates and notifications
+- Efficient assignment and escalation workflows
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Technologies Used
+- Salesforce Platform (Apex, Lightning Components)
+- Automation tools (Flows, Process Builder)
+- Data integration and management techniques
 
-## Read All About It
+## Installation
+1. Clone the repository.
+2. Deploy metadata using Salesforce CLI or ANT Migration Tool.
+3. Configure org-specific settings and users.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Usage
+- Log into Salesforce org.
+- Access Inquiry Management tab to view and update inquiries.
+- Configure automated responses as needed.
+
+## Contributing
+Contributions via pull requests are welcome. Please maintain code quality and document changes.
+
+## License
+This project is licensed under the [Specify License].
+
+***
