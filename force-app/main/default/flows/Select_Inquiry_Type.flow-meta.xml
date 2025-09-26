@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <choices>
+        <name>Account_Update</name>
+        <choiceText>Account Update</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Account Update</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Cancellation_request</name>
+        <choiceText>Cancellation request</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Cancellation request</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>complaint</name>
+        <choiceText>complaint</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>complaint</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Feedback</name>
+        <choiceText>Feedback</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Feedback</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Sales_Inquiry</name>
+        <choiceText>Sales Inquiry</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Sales Inquiry</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Technical_issue</name>
+        <choiceText>Technical issue</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Technical issue</stringValue>
+        </value>
+    </choices>
+    <environments>Default</environments>
+    <interviewLabel>Select Inquiry Type {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Select Inquiry Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Inquiry_Input</name>
+        <label>Inquiry Input</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Name</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Inquiry_Type</name>
+            <choiceReferences>Technical_issue</choiceReferences>
+            <choiceReferences>complaint</choiceReferences>
+            <choiceReferences>Feedback</choiceReferences>
+            <choiceReferences>Account_Update</choiceReferences>
+            <choiceReferences>Sales_Inquiry</choiceReferences>
+            <choiceReferences>Cancellation_request</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Inquiry Type</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Inquiry_date</name>
+            <dataType>Date</dataType>
+            <fieldText>Inquiry date</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Inquiry_Input</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

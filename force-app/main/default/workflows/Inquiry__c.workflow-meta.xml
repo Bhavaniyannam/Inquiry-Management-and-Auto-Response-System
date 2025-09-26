@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Auto_Response</fullName>
+        <description>Auto response generated</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>bhavaniyannam443229@agentforce.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SchedulerUnauthenticatedUserAppointmentTypeEmailTemplateForThirdParty</template>
+    </alerts>
+    <alerts>
+        <fullName>Inquiry_Auto_Response_Email_Alert</fullName>
+        <description>Inquiry Auto-Response Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>bhavaniyannam443229@agentforce.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>epic.e596851c996f@orgfarm.salesforce.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>bhavaniyannam182005@gmail.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/SchedulerUnauthenticatedUserAppointmentTypeEmailTemplateForThirdParty</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Auto_Assign</fullName>
+        <field>Name</field>
+        <name>Auto Assign</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Auto_Resonse</fullName>
+        <field>Inquiry_Source__c</field>
+        <literalValue>Email</literalValue>
+        <name>Auto Resonse</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Mark_Auto_Response_Sent</fullName>
+        <field>Auto_Response_Sent__c</field>
+        <literalValue>1</literalValue>
+        <name>Mark Auto-Response Sent</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <outboundMessages>
+        <fullName>Send_Inquiry_Data_to_Zapier</fullName>
+        <apiVersion>64.0</apiVersion>
+        <endpointUrl>https://hooks.zapier.com/hooks/catch/24753211/u1wtx3m/</endpointUrl>
+        <fields>Account__c</fields>
+        <fields>Account_inquiry__c</fields>
+        <fields>Assigned_To_User__c</fields>
+        <fields>Auto_Response_Sent__c</fields>
+        <fields>Contact__c</fields>
+        <fields>CreatedDate</fields>
+        <fields>Id</fields>
+        <fields>Inquiry_Source__c</fields>
+        <fields>Inquiry_Status__c</fields>
+        <fields>Inquiry_Type__c</fields>
+        <fields>Name</fields>
+        <fields>Priority__c</fields>
+        <fields>User__c</fields>
+        <includeSessionId>false</includeSessionId>
+        <integrationUser>bhavaniyannam443229@agentforce.com</integrationUser>
+        <name>Send Inquiry Data to Zapier</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Auto-Assign New Inquiry</fullName>
+        <actions>
+            <name>Auto_Assign</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Inquiry__c.Inquiry_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Auto-Response Email</fullName>
+        <actions>
+            <name>Auto_Response</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Auto_Resonse</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Mark_Auto_Response_Sent</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Inquiry__c.Inquiry_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Inquiry__c.Auto_Response_Sent__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Create Follow-Up Task</fullName>
+        <actions>
+            <name>Follow_up_with_inquiry_customer</name>
+            <type>Task</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Inquiry__c.Inquiry_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Inquiry Webhook Integration Rule</fullName>
+        <actions>
+            <name>Send_Inquiry_Data_to_Zapier</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Inquiry__c.Inquiry_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <description>Sends inquiry record data to the Zapier webhook URL when a new inquiry is created or updated.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Approve_User</fullName>
+        <assignedTo>bhavaniyannam443229@agentforce.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>3</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Inquiry__c.Received_Date__c</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Approve User</subject>
+    </tasks>
+    <tasks>
+        <fullName>Follow_up_with_inquiry_customer</fullName>
+        <assignedTo>bhavaniyannam443229@agentforce.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>1</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Inquiry__c.CreatedDate</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Follow up with inquiry customer</subject>
+    </tasks>
+</Workflow>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandatory_Fields_Check</fullName>
+    <active>true</active>
+    <description>Ensures required fields are filled to prevent incomplete records.</description>
+    <errorConditionFormula>ISBLANK(Customer_Name__c) || ISBLANK(Email__c)</errorConditionFormula>
+    <errorMessage>Customer Name and Email are required fields.</errorMessage>
+</ValidationRule>

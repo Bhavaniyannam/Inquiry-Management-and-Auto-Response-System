@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Inquiries List">
+        <template if:true={inquiries.data}>
+            <lightning-datatable
+                key-field="Id"
+                data={inquiries.data}
+                columns={columns}
+                hide-checkbox-column="true"
+            ></lightning-datatable>
+        </template>
+        <template if:true={inquiries.error}>
+            <div class="slds-text-color_error">
+                {inquiries.error}
+            </div>
+        </template>
+    </lightning-card>
+</template>
