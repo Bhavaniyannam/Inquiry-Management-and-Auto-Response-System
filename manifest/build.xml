@@ -1,0 +1,26 @@
+<project name="Salesforce Deploy" default="deploy" basedir=".">
+    <property file="build.properties"/>
+
+    <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        <classpath>
+            <pathelement location="ant-salesforce.jar"/>
+        </classpath>
+    </taskdef>
+
+    <target name="retrieve">
+        <sf:retrieve
+            username="${sf.username}"
+            password="${sf.password}"
+            serverurl="${sf.serverurl}"
+            retrieveTarget="manifest"
+            unpackaged="manifest/package.xml"/>
+    </target>
+
+    <target name="deploy">
+        <sf:deploy
+            username="${sf.username}"
+            password="${sf.password}"
+            serverurl="${sf.serverurl}"
+            deployRoot="manifest"/>
+    </target>
+</project>
